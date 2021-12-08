@@ -26,7 +26,10 @@ export const useProduct = ({
     if (isControlled.current) {
       return onChange!({ count: value, product });
     }
-    const newValue = Math.max(counter + value, 0);
+    const newValue = Math.min(
+      Math.max(counter + value, 0),
+      initialValues?.maxCount || 9999
+    );
     setCounter(newValue);
     onChange && onChange({ count: newValue, product });
   };
