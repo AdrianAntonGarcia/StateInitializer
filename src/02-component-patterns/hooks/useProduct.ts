@@ -19,7 +19,9 @@ export const useProduct = ({
   initialValues,
 }: UseProductProps) => {
   const [counter, setCounter] = useState<number>(initialValues?.count || value);
+  const isMounted = useRef(false);
   const isControlled = useRef(!!onChange);
+
   const increaseBy = (value: number) => {
     if (isControlled.current) {
       return onChange!({ count: value, product });
@@ -28,8 +30,14 @@ export const useProduct = ({
     setCounter(newValue);
     onChange && onChange({ count: newValue, product });
   };
+
   useEffect(() => {
+    if (!isMounted.current) return;
     setCounter(value);
   }, [value]);
+
+  useEffect(() => {
+    isMounted.current = true;
+  }, []);
   return { counter, increaseBy };
 };
