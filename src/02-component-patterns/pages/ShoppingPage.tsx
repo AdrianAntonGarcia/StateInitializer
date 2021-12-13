@@ -15,9 +15,14 @@ export const ShoppingPage = () => {
         className="bg-dark text-white"
         initialValues={{ count: 4, maxCount: 10 }}
       >
-        <ProductCard.Image className="custom-image" />
-        <ProductCard.Title className="text-bold" />
-        <ProductCard.Buttons className="custom-buttons" />
+        {(mensaje: string) => (
+          <>
+            <ProductCard.Image className="custom-image" />
+            <ProductCard.Title className="text-bold" />
+            <ProductCard.Buttons className="custom-buttons" />
+            <h1>{mensaje}</h1>
+          </>
+        )}
       </ProductCard>
     </div>
   );
