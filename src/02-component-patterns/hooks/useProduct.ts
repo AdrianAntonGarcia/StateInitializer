@@ -42,5 +42,5 @@ export const useProduct = ({
   useEffect(() => {
     isMounted.current = true;
   }, []);
-  return { counter, increaseBy };
+  return { counter, increaseBy, maxCount: initialValues?.maxCount };
 };

@@ -30,14 +30,21 @@ export const ProductCard = ({
   initialValues,
 }: Props) => {
   const { Provider } = ProductContext;
-  const { counter, increaseBy } = useProduct({
+  const { counter, increaseBy, maxCount } = useProduct({
     onChange,
     product,
     value,
     initialValues,
   });
   return (
-    <Provider value={{ counter, increaseBy, product }}>
+    <Provider
+      value={{
+        counter,
+        increaseBy,
+        product,
+        maxCount,
+      }}
+    >
       <div style={style} className={`${styles.productCard} ${className}`}>
         {children('Hola mundo')}
       </div>
